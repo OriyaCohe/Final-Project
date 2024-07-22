@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="screen">
+    <div class="screen__content">
+      <form class="login">
+        <div class="login__field">
+          <input name="id" #id type="text" class="login__input" placeholder="תעודת זהות" minlength="9" maxlength="9">
+        <span *ngIf="idErr" class="error">*תעודת זהות לא תקינה</span>
+        </div>
+        <div class="login__field">
+          <input name="pass" #pass type="password" class="login__input" placeholder="סיסמא" minlength="4" maxlength="10" >
+        </div>
+        <span *ngIf="passErr" class="error">* סיסמא לא תקינה</span>
+        <button (click)="login(id.value,pass.value)"   class="button login__submit">התחבר</button>
+      </form>
+      <div class="social-login">
+        <a routerLink="/signUp" style="color: azure;">הירשם</a>
+      </div>
+    </div>
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>
+  </div>
+</div>

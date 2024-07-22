@@ -1,0 +1,11 @@
+<div id="wel">
+    <span>שלום </span>
+    <span>{{volunterr.Name}}</span><br /><br />
+    <button (click)="Ok()">לאישור היום</button>&nbsp;
+    <button (click)="end()">סירוב היום</button><br /><br />
+    <span>מס הפניה שתרצה לאשר</span><br />
+    <input #text type="number" (keyup.enter)="OkR(text.valueAsNumber); text.value=''">
+    <button (click)="OkR(text.valueAsNumber  )"> ✔️</button>
+
+    <h1>תודה ויום מוצלח</h1>
+</div>

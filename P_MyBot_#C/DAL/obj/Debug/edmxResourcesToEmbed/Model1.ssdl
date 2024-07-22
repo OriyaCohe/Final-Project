@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBMyBotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Idvolunteer" Type="int" />
+  </EntityType>
+  <EntityType Name="volunteers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone" Type="nchar" MaxLength="10" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="10" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Request__Idvolun__6E01572D">
+    <End Role="volunteers" Type="Self.volunteers" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="volunteers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="Idvolunteer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBMyBotModelStoreContainer">
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="volunteers" EntityType="Self.volunteers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Request__Idvolun__6E01572D" Association="Self.FK__Request__Idvolun__6E01572D">
+      <End Role="volunteers" EntitySet="volunteers" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

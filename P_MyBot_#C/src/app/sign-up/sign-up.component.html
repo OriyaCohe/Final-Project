@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="screen">
+    <div class="screen__content">
+      <form class="login">
+        <div class="login__field">
+          <input #tz type="number" class="login__input" maxlength="9" minlength="9" placeholder="תעודת זהות"
+            (change)="check(tz.value,idErr)&&checkLen(n.value,2,nErr)"><br />
+        </div>
+        <div class="login__field">
+          <input #n type="text" class="login__input" minlength="2" placeholder=":שם מלא"
+            (change)="checkLen(n.value,2,nErr)"><br />
+        </div>
+        <div class="login__field">
+          <input #p type="number" class="login__input" maxlength="10" minlength="10" placeholder=":פלאפון "
+            (change)="check(p.value,pErr)&&checkLen(p.value,10,pErr)"><br />
+        </div>
+        <div class="login__field">
+          <input #pass type="password" class="login__input" minlength="4" maxlength="10" placeholder=":סיסמא"
+            (change)="checkLen(pass.value,4,passErr)"><br />
+        </div>
+        <button (click)="signUp(tz.value,n.value,p.value,pass.value)" class="button login__submit">להרשמה</button>
+      </form>
+    </div>
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>
+  </div>
+</div>

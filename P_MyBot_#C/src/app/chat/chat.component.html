@@ -1,0 +1,17 @@
+<div class="bot-header d-flex justify-content-around">
+    <span class="cancel" (click)="cancel()">✖️</span>
+    <h1>לשרותך 24 שעות ביממה</h1>
+</div>
+<div class="bot-body">
+    <div *ngFor="let t of tArr let i=index">
+        <div id="di"> <img src="../../assets/img/ראש.png" *ngIf="i%2==0" height="50px"></div>
+        <div class="bot-text" *ngIf="i%2==0">{{t}}</div>
+        <div id="di2"> <img src="../../assets/img/דמות.png" *ngIf="i%2!=0" height="50px"></div>
+
+        <div class="user-text" *ngIf="i%2!=0">{{t}}</div>
+    </div>
+</div>
+<div id="text" class="bot-text m-auto" *ngIf="text">
+    <input  [disabled]="flag" #text type="text" (keyup.enter)="send(text.value); text.value=''">
+    <span class="span" (click)="send(text.value); text.value=''">⫸</span>
+</div>

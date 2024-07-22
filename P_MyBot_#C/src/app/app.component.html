@@ -1,0 +1,18 @@
+<!-- <div class="example-container">
+    <button (click)="snav.toggle()" class="btn"></button>
+
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav class="sidenav" #snav position="end" [fixedInViewport]="mobileQuery.matches">
+            <div class="background" (click)="snav.toggle()">
+                <div class="chat text-center" (click)="$event.stopPropagation()">
+                    <app-chat (cancelEvent)="snav.toggle()"></app-chat>
+                </div>
+            </div>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div> -->
+<router-outlet></router-outlet>

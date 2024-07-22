@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBMyBotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Idvolunteer" Type="int" />
+        </EntityType>
+        <EntityType Name="volunteers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="phone" Type="nchar" MaxLength="10" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Request__Idvolun__6E01572D">
+          <End Role="volunteers" Type="Self.volunteers" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="volunteers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Idvolunteer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMyBotModelStoreContainer">
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="volunteers" EntityType="Self.volunteers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Request__Idvolun__6E01572D" Association="Self.FK__Request__Idvolun__6E01572D">
+            <End Role="volunteers" EntitySet="volunteers" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBMyBotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBMyBotEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Request" EntityType="DBMyBotModel.Request" />
+          <EntitySet Name="volunteers" EntityType="DBMyBotModel.volunteers" />
+          <AssociationSet Name="FK__Request__Idvolun__6E01572D" Association="DBMyBotModel.FK__Request__Idvolun__6E01572D">
+            <End Role="volunteers" EntitySet="volunteers" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Idvolunteer" Type="Int32" />
+          <NavigationProperty Name="volunteers" Relationship="DBMyBotModel.FK__Request__Idvolun__6E01572D" FromRole="Request" ToRole="volunteers" />
+        </EntityType>
+        <EntityType Name="volunteers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Request" Relationship="DBMyBotModel.FK__Request__Idvolun__6E01572D" FromRole="volunteers" ToRole="Request" />
+        </EntityType>
+        <Association Name="FK__Request__Idvolun__6E01572D">
+          <End Type="DBMyBotModel.volunteers" Role="volunteers" Multiplicity="0..1" />
+          <End Type="DBMyBotModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="volunteers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Idvolunteer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBMyBotModelStoreContainer" CdmEntityContainer="DBMyBotEntities">
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="DBMyBotModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="Idvolunteer" ColumnName="Idvolunteer" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="volunteers">
+            <EntityTypeMapping TypeName="DBMyBotModel.volunteers">
+              <MappingFragment StoreEntitySet="volunteers">
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

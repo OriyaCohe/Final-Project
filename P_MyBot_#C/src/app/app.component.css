@@ -1,0 +1,53 @@
+.btn{
+width: 4rem;
+height: 4rem;
+position: fixed;
+right: .5rem;
+bottom: .5rem;
+border:none;
+	border-radius:50%;
+	appearance:none;
+	  -webkit-appearance:none;
+	background: linear-gradient(45deg,#0052D4,#6FB1FC
+	);
+	text-align: center;
+	box-shadow: 0 0 5px #6fb1fc;
+    -webkit-animation: jello-horizontal 1s both;
+	animation: jello-horizontal 1s 1s both;
+	z-index: 100;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.example-sidenav-container {
+  flex: 1;
+}
+.sidenav{
+	width: 100%;
+}
+.chat{
+	background-color: white;
+	width: 30%;
+	height: 100vh;
+	z-index: 10;
+	position: absolute;
+	right: 0;
+	border-radius: 100px;
+	overflow: hidden !important;
+}
+.background{
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .6);
+	z-index: 1;
+	
+}

@@ -1,0 +1,15 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Target Name="CopyHunspellNativeToOutput" BeforeTargets="CoreCompile"
+		Condition="'$(OS)'=='Windows_NT'">
+		<PropertyGroup>
+			<RuntimesDirectory>$(MSBuildThisFileDirectory)\..\runtimes</RuntimesDirectory>
+		</PropertyGroup>
+		<ItemGroup>
+			<HunspellLibs Include="$(RuntimesDirectory)/**/Hunspell*.dll"/>
+		</ItemGroup>
+
+		<Message Text="Copying @(HunspellLibs) to $(OutputPath)"/>
+		<Copy SourceFiles="@(HunspellLibs)" DestinationFolder="$(OutputPath)" />
+	</Target>
+</Project>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBMyBotModelStoreContainer" CdmEntityContainer="DBMyBotEntities">
+    <EntitySetMapping Name="Request">
+      <EntityTypeMapping TypeName="DBMyBotModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="Idvolunteer" ColumnName="Idvolunteer" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="volunteers">
+      <EntityTypeMapping TypeName="DBMyBotModel.volunteers">
+        <MappingFragment StoreEntitySet="volunteers">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
